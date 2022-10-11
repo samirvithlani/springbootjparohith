@@ -2,6 +2,7 @@ package com.bean;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -9,11 +10,12 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users1")
 @JsonIgnoreProperties
 public class UserBean {
 
@@ -24,17 +26,16 @@ public class UserBean {
 	private String uName;
 
 	private String uEmail;
-	private String ePassword;
+	private String password;
 	private String uPhone;
 	private int uAge;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	
 	private AccountBean accounts;
-	
+
 	@Transient
 	private int aId;
-	
 
 	public int getaId() {
 		return aId;
@@ -68,13 +69,7 @@ public class UserBean {
 		this.uEmail = uEmail;
 	}
 
-	public String getePassword() {
-		return ePassword;
-	}
-
-	public void setePassword(String ePassword) {
-		this.ePassword = ePassword;
-	}
+	
 
 	public String getuPhone() {
 		return uPhone;
@@ -99,5 +94,15 @@ public class UserBean {
 	public void setAccounts(AccountBean accounts) {
 		this.accounts = accounts;
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
 
 }

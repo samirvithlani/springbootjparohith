@@ -32,7 +32,7 @@ public class UserDao implements UserService {
 	@Override
 	public UserBean getUserById(int uId) {
 		// TODO Auto-generated method stub
-		return null;
+		return userRepository.findById(uId).get();
 	}
 
 	@Override
