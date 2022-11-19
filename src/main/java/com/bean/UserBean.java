@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "users1")
+@Table(name = "users")
 @JsonIgnoreProperties
 public class UserBean {
 
